@@ -263,6 +263,13 @@ button { font: inherit; color: inherit; }
 .faq .a > p { font-size: 16px; line-height: 1.6; color: #4a4a55; max-width: 60ch; }
 .faq .empty { display: none; padding: 24px 0; color: var(--slate); }
 
+/* ---------- remark ---------- */
+.remark-card { background: var(--stone); border-radius: var(--r-lg); padding: clamp(28px, 5vw, 56px); display: flex; flex-direction: column; gap: 20px; }
+.remark-card .quote-mark { font-family: var(--f-display); font-size: 64px; line-height: .6; color: var(--coral); }
+.remark-card blockquote { margin: 0; font-family: var(--f-display); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.5; letter-spacing: -0.01em; max-width: 40ch; }
+.remark-card blockquote.pending { color: var(--slate); }
+.remark-card .by { font-size: 15px; color: var(--slate); }
+
 footer { background: var(--primary); color: #fff; padding: 64px 0 48px; }
 footer .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
 footer .k { font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; color: var(--coral); letter-spacing: .03em; }
@@ -348,6 +355,7 @@ footer .right { display: flex; flex-direction: column; gap: 10px; justify-conten
       <li><a href="#duties">핵심 업무</a></li>
       <li><a href="#field">오류 대응표</a></li>
       <li><a href="#faq">예상 질문</a></li>
+      <li><a href="#remark">수석님의 한마디</a></li>
     </ul>
     <div class="nav-right">
       <button type="button" class="search-btn" id="search-btn" aria-expanded="false" aria-controls="search-panel"><span>내용 검색</span><kbd>/</kbd></button>
@@ -362,6 +370,7 @@ footer .right { display: flex; flex-direction: column; gap: 10px; justify-conten
         <li><a href="#duties">핵심 업무 <span>03</span></a></li>
         <li><a href="#field">현장 오류 대응표 <span>04</span></a></li>
         <li><a href="#faq">예상 질문 <span>05</span></a></li>
+        <li><a href="#remark">김태경 수석님의 한마디 <span>06</span></a></li>
       </ul>
     </div>
   </nav>
@@ -393,7 +402,7 @@ footer .right { display: flex; flex-direction: column; gap: 10px; justify-conten
             <b>나는 무엇을 하게 될까?</b>
           </div>
           <div class="c-row"><span class="k">소속</span><span class="v"><b>사업전략본부</b></span></div>
-          <div class="c-row"><span class="k">주 업무 환경</span><span class="v"><b>리커링사업부</b><span class="badge">메인 강사님과 주로 함께</span></span></div>
+          <div class="c-row"><span class="k">주 업무 환경</span><span class="v"><b>리커링사업부</b><span class="badge">메인 강사님(김태경 수석님)과 주로 함께</span></span></div>
           <div class="c-row"><span class="k">교육 관련 핵심 업무</span><span class="v"><b>3</b><span class="badge">캔버스 에이전트</span><span class="badge">기술자문</span><span class="badge">범용 에이전트</span></span></div>
         </div>
         <div class="media-card">
@@ -541,6 +550,20 @@ footer .right { display: flex; flex-direction: column; gap: 10px; justify-conten
         <input id="faq-q" type="search" placeholder="키워드로 찾기 (예: 업무량, 강사, 캠프)">
       </div>
       <div class="faq" id="faq-list"></div>
+    </div>
+  </section>
+
+  <!-- 06 REMARK -->
+  <section id="remark" class="sec" style="padding-top:40px">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="l"><span class="label">06 · Message</span><h2>김태경 수석님의 한마디</h2></div>
+      </div>
+      <div class="remark-card">
+        <span class="quote-mark" aria-hidden="true">“</span>
+        <blockquote class="pending" id="remark-text">내용 준비 중입니다.</blockquote>
+        <span class="by">김태경 수석님</span>
+      </div>
     </div>
   </section>
 
@@ -808,7 +831,7 @@ footer .right { display: flex; flex-direction: column; gap: 10px; justify-conten
 
   /* ================= search ================= */
   const panel = $("#search-panel"), sInput = $("#search-input"), sResults = $("#search-results"), sBtn = $("#search-btn");
-  const SEC_NAMES = { overview: "한눈에 보기", position: "01 내 위치", roadmap: "02 업무 적응과정", duties: "03 핵심 업무", field: "04 오류 대응표", faq: "05 예상 질문" };
+  const SEC_NAMES = { overview: "한눈에 보기", position: "01 내 위치", roadmap: "02 업무 적응과정", duties: "03 핵심 업무", field: "04 오류 대응표", faq: "05 예상 질문", remark: "06 수석님의 한마디" };
   let INDEX = [];
   function buildIndex() {
     INDEX = [];
